@@ -13,4 +13,6 @@ public interface OnItemClickListener {
 
     void onItemClicked(int position);
 
+    void onItemDeleted(int position);
+
 }

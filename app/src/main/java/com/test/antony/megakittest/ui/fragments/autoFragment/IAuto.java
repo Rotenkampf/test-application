@@ -22,6 +22,7 @@ public interface IAuto {
         void saveAuto(AutoData autoData);
         void loadAutos();
         void loadOwners();
+        void deleteAuto(String autoId);
 
     }
 

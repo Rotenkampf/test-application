@@ -10,20 +10,21 @@
     >
 
     <ImageView
-        android:id="@+id/item_auto_image"
+        android:id="@+id/item_list_image"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical"
         >
 
         <TextView
-            android:id="@+id/item_auto_name"
+            android:id="@+id/item_list_name"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:paddingBottom="8dp"
@@ -31,12 +32,20 @@
             />
 
         <TextView
-            android:id="@+id/item_auto_owner"
+            android:id="@+id/item_list_second"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             style="@style/MediumText"
             />
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/item_list_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:background="#fff"/>
 
 </LinearLayout>

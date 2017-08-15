@@ -10,6 +10,7 @@ import com.test.antony.megakittest.data.db.model.OwnerData;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,13 +26,13 @@ import retrofit2.http.Query;
 public interface OwnerApi {
 
     @GET("api/owner")
-    Call<List<AutoData>> getAutos();
+    Observable<List<AutoData>> getAutos();
 
     @PUT("api/owner")
-    Call<ResponseBody> sendOwner(@Body OwnerData ownerData);
+    Observable<ResponseBody> sendOwner(@Body OwnerData ownerData);
 
     @DELETE("api/owner")
-    Call<ResponseBody> deleteOwner(@Query("id") String id);
+    Observable<ResponseBody> deleteOwner(@Query("id") String id);
 
 
 }

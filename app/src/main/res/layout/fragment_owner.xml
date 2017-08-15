@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.
+  ~ Antony Mosin mossanva@gmail.com
+  -->
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,7 +14,7 @@
         />
 
     <FrameLayout
-        android:id="@+id/fragment_auto_mask_layout"
+        android:id="@+id/fragment_owner_mask_layout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="@color/app_grey"
@@ -18,17 +23,16 @@
         />
 
     <include
-        android:id="@+id/fragment_auto_create_auto"
-        layout="@layout/card_auto_create"
-        android:visibility="gone"
-        />
-
-    <include
-        android:id="@+id/fragment_auto_create_owner"
+        android:id="@+id/fragment_owner_create_owner"
         layout="@layout/card_owner_create"
         android:visibility="gone"
         />
 
+    <include
+        android:id="@+id/fragment_owner_create_auto"
+        layout="@layout/card_auto_create"
+        android:visibility="gone"
+        />
 
 
 </FrameLayout>

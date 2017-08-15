@@ -15,4 +15,5 @@ public interface IDatabaseManager {
 
     <V extends RealmObject> Observable<List<V>> getData(Class<V> clazz);
 
+    <V extends RealmObject> void deleteFromDatabase(Class<V> clazz, String objectId);
 }

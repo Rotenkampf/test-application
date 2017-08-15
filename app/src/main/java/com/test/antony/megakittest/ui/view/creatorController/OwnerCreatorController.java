@@ -40,7 +40,6 @@ public class OwnerCreatorController extends AbstractCreatorController<OwnerData,
     private Button mCancelButton;
     private Button mAddNewAutoButton;
 
-    private CreatorListener mCreatorCancelListener;
     private AutoCreatorController mAutoCreatorController;
     private List<AutoData> mSelectedAutos=new ArrayList<>();
     private Disposable mNestedSaveDisposable;
@@ -69,8 +68,8 @@ public class OwnerCreatorController extends AbstractCreatorController<OwnerData,
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mCreatorCancelListener!=null){
-                    mCreatorCancelListener.onCancel();
+                if (getCreatorListener()!=null){
+                    getCreatorListener().onCancel();
                 }
             }
         });
@@ -123,7 +122,7 @@ public class OwnerCreatorController extends AbstractCreatorController<OwnerData,
 
             @Override
             public void onError(String message) {
-                mCreatorCancelListener.onError(message);
+                getCreatorListener().onError(message);
             }
         });
     }
@@ -132,7 +131,7 @@ public class OwnerCreatorController extends AbstractCreatorController<OwnerData,
     public void setData(OwnerData data) {
         super.setData(data);
         mNameEditText.setText(data.getName());
-        mExperienceEditText.setText(data.getExperience());
+        mExperienceEditText.setText(Integer.toString(data.getExperience()));
         for (AutoData autoData:data.getAutos()) {
             mAutoCompletionView.addObject(autoData);
         }
@@ -164,10 +163,19 @@ public class OwnerCreatorController extends AbstractCreatorController<OwnerData,
 
     @Override
     protected OwnerData formSaveData(){
-        OwnerData ownerData=new OwnerData();
-        ownerData.setId(UUID.randomUUID().toString());
+        OwnerData ownerData;
+        if (getSavedData()!=null){
+            ownerData=getSavedData();
+        } else {
+            ownerData=new OwnerData();
+            ownerData.setId(UUID.randomUUID().toString());
+        }
         ownerData.setName(mNameEditText.getText().toString());
+        ownerData.setExperience(Integer.parseInt(mExperienceEditText.getText().toString()));
         ownerData.setAutos(new RealmList<AutoData>());
+        for (AutoData autoData:mSelectedAutos){
+            autoData.setOwner(ownerData);
+        }
         ownerData.getAutos().addAll(mSelectedAutos);
         return ownerData;
     }
@@ -175,14 +183,15 @@ public class OwnerCreatorController extends AbstractCreatorController<OwnerData,
     @Override
     protected boolean isValid(){
         if (mNameEditText.getText().toString().isEmpty()){
-            mCreatorCancelListener.onError("Не указано имя");
+            getCreatorListener().onError("Не указано имя");
             return false;
         }
-        if (!mExperienceEditText.getText().toString().isEmpty()){
-            mCreatorCancelListener.onError("Не указан стаж");
+        if (mExperienceEditText.getText().toString().isEmpty()){
+            getCreatorListener().onError("Не указан стаж");
+            return false;
         }
-        if (!isNested() && mSelectedAutos.size()>0){
-            mCreatorCancelListener.onError("Не указаны авто");
+        if (!isNested() && mSelectedAutos.size()==0){
+            getCreatorListener().onError("Не указаны авто");
             return false;
         }
         return true;

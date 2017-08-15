@@ -157,7 +157,7 @@ public class AutoCreatorController extends AbstractCreatorController<AutoData, O
         }
         autoData.setName(mNameEditText.getText().toString());
         autoData.setNumber(mNumberEditText.getText().toString());
-        if (!mSelectedOwner.getAutos().contains(autoData)) {
+        if (mSelectedOwner!=null && !mSelectedOwner.getAutos().contains(autoData)) {
             mSelectedOwner.getAutos().add(autoData);
         }
         autoData.setOwner(mSelectedOwner);
@@ -186,8 +186,9 @@ public class AutoCreatorController extends AbstractCreatorController<AutoData, O
             getCreatorListener().onError("Не указано имя");
             return false;
         }
-        if (!mNumberEditText.getText().toString().isEmpty()){
+        if (mNumberEditText.getText().toString().isEmpty()){
             getCreatorListener().onError("Не указаны номера");
+            return false;
         }
         if (!mIsNested && mSelectedOwner==null){
             getCreatorListener().onError("Не указан владелец");

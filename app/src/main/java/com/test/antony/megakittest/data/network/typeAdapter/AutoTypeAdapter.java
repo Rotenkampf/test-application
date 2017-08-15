@@ -21,6 +21,7 @@ import java.io.IOException;
  */
 
 public class AutoTypeAdapter extends TypeAdapter<AutoData>{
+
     public AutoData read(JsonReader reader) throws IOException {
         if (reader.peek() == JsonToken.NULL) {
             reader.nextNull();
@@ -58,7 +59,7 @@ public class AutoTypeAdapter extends TypeAdapter<AutoData>{
                 case "name":
                     ownerData.setName(reader.nextString());
                     break;
-                case "number":
+                case "experience":
                     ownerData.setExperience(reader.nextInt());
                     break;
             }

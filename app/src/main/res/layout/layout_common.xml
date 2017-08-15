@@ -4,9 +4,27 @@
   ~ Antony Mosin mossanva@gmail.com
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-</LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/layout_common_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/layout_common_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        app:fab_colorNormal="@color/accent"
+        app:fab_shadowRadius="10dp"
+        app:fab_showShadow="true"
+        app:fab_elevationCompat="4dp"
+        app:fabSize="normal"
+        android:padding="16dp"
+        />
+</FrameLayout>

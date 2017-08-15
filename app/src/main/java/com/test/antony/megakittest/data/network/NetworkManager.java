@@ -5,9 +5,11 @@ import android.util.Log;
 
 import com.google.gson.GsonBuilder;
 import com.test.antony.megakittest.data.db.model.AutoData;
+import com.test.antony.megakittest.data.db.model.OwnerData;
 import com.test.antony.megakittest.data.network.api.AutoApi;
 import com.test.antony.megakittest.data.network.api.OwnerApi;
 import com.test.antony.megakittest.data.network.typeAdapter.AutoTypeAdapter;
+import com.test.antony.megakittest.data.network.typeAdapter.OwnerTypeAdapter;
 import com.test.antony.megakittest.di.ApplicationContext;
 
 import javax.inject.Inject;
@@ -38,7 +40,9 @@ public class NetworkManager implements INetworkManager {
     public NetworkManager(@ApplicationContext Context context){
         mContext=context;
         GsonBuilder builder=new GsonBuilder();
-        builder.registerTypeAdapter(AutoData.class, new AutoTypeAdapter());
+        builder
+                .registerTypeAdapter(AutoData.class, new AutoTypeAdapter())
+                .registerTypeAdapter(OwnerData.class, new OwnerTypeAdapter());
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(builder.create()))
@@ -53,6 +57,24 @@ public class NetworkManager implements INetworkManager {
     public void sendAuto(AutoData autoData) {
         mAutoApi
                 .sendAuto(autoData)
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<ResponseBody>() {
+                    @Override
+                    public void accept(@NonNull ResponseBody responseBody) throws Exception {
+                        Log.d("retrofit", responseBody.string());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+                        Log.d("retrofit", throwable.getMessage());
+                    }
+                });
+    }
+
+    @Override
+    public void sendOwner(OwnerData ownerData) {
+        mOwnerApi
+                .sendOwner(ownerData)
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<ResponseBody>() {
                     @Override

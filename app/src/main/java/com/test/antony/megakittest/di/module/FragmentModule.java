@@ -7,6 +7,8 @@ import com.test.antony.megakittest.di.ActivityContext;
 import com.test.antony.megakittest.di.PerFragment;
 import com.test.antony.megakittest.ui.fragments.autoFragment.AutoPresenter;
 import com.test.antony.megakittest.ui.fragments.autoFragment.IAuto;
+import com.test.antony.megakittest.ui.fragments.ownerFragment.IOwner;
+import com.test.antony.megakittest.ui.fragments.ownerFragment.OwnerPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -43,6 +45,12 @@ public class FragmentModule {
     @Provides
     @PerFragment
     IAuto.Presenter<IAuto.View> provideAutoPresenter(AutoPresenter<IAuto.View>  presenter){
+        return presenter;
+    }
+
+    @Provides
+    @PerFragment
+    IOwner.Presenter<IOwner.View> provideOwnerPresenter(OwnerPresenter<IOwner.View> presenter){
         return presenter;
     }
 

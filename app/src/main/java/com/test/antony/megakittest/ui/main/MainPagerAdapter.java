@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v13.app.FragmentPagerAdapter;
 
 import com.test.antony.megakittest.ui.fragments.autoFragment.AutoFragment;
+import com.test.antony.megakittest.ui.fragments.ownerFragment.OwnerFragment;
 
 /**
  * Created by Antony Mosin
@@ -25,7 +26,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0: return new AutoFragment();
-            case 1: return new Fragment();
+            case 1: return new OwnerFragment();
         }
         return new Fragment();
     }

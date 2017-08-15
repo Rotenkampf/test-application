@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.test.antony.megakittest.App;
 import com.test.antony.megakittest.di.component.DaggerFragmentComponent;
@@ -98,7 +99,7 @@ public class BaseFragment extends Fragment implements IBase.View{
 
     @Override
     public void handleError(String message) {
-
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

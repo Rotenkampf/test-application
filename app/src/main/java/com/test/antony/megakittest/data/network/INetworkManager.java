@@ -1,6 +1,7 @@
 package com.test.antony.megakittest.data.network;
 
 import com.test.antony.megakittest.data.db.model.AutoData;
+import com.test.antony.megakittest.data.db.model.OwnerData;
 
 /**
  * Created by Antony Mosin
@@ -9,5 +10,7 @@ import com.test.antony.megakittest.data.db.model.AutoData;
 public interface INetworkManager {
 
     void sendAuto(AutoData autoData);
+
+    void sendOwner(OwnerData ownerData);
 
 }

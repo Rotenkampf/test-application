@@ -63,4 +63,14 @@ public class DatabaseManager implements IDatabaseManager{
         });
     }
 
+    @Override
+    public <V extends RealmObject> void deleteFromDatabase(final Class<V> clazz, final String objectId) {
+        mRealm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                V object=realm.where(clazz).equalTo("id", objectId).findFirst();
+                object.deleteFromRealm();
+            }
+        });
+    }
 }

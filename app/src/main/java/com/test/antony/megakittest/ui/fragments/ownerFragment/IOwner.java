@@ -27,6 +27,7 @@ public interface IOwner {
         void saveOwner(OwnerData ownerData);
         void loadAutos();
         void loadOwners();
+        void deleteOwner(String ownerId);
 
     }
 

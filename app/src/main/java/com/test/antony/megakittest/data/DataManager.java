@@ -43,6 +43,11 @@ public class DataManager implements IDataManager {
     }
 
     @Override
+    public void addOwner(OwnerData ownerData) {
+        mDatabaseManager.addToDatabase(ownerData);
+    }
+
+    @Override
     public Observable<List<AutoData>> getAutos() {
         return mDatabaseManager.getData(AutoData.class);
     }
@@ -50,5 +55,15 @@ public class DataManager implements IDataManager {
     @Override
     public Observable<List<OwnerData>> getOwners() {
         return mDatabaseManager.getData(OwnerData.class);
+    }
+
+    @Override
+    public void deleteOwner(String ownerId) {
+        mDatabaseManager.deleteFromDatabase(OwnerData.class, ownerId);
+    }
+
+    @Override
+    public void deleteAuto(String autoId) {
+        mDatabaseManager.deleteFromDatabase(AutoData.class, autoId);
     }
 }

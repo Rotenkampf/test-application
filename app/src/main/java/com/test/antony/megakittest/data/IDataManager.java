@@ -15,8 +15,14 @@ public interface IDataManager {
 
     void addAuto(AutoData autoData);
 
+    void addOwner(OwnerData ownerData);
+
     Observable<List<AutoData>> getAutos();
 
     Observable<List<OwnerData>> getOwners();
+
+    void deleteOwner(String ownerId);
+
+    void deleteAuto(String autoId);
 
 }

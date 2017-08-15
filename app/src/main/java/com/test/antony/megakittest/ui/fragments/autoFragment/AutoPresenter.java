@@ -63,4 +63,9 @@ public class AutoPresenter<V extends IAuto.View> extends BasePresenter<V> implem
                         })
         );
     }
+
+    @Override
+    public void deleteAuto(String autoId) {
+        getDataManager().deleteAuto(autoId);
+    }
 }

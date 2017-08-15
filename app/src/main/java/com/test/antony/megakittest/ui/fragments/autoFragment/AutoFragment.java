@@ -47,9 +47,9 @@ public class AutoFragment extends BaseFragment implements IAuto.View {
     @Inject
     IAuto.Presenter<IAuto.View> mPresenter;
 
-    @BindView(R.id.fragment_auto_recycler)
+    @BindView(R.id.layout_common_recycler)
     RecyclerView mAutoRecycler;
-    @BindView(R.id.fragment_auto_add)
+    @BindView(R.id.layout_common_add)
     FloatingActionButton mAddButton;
     @BindView(R.id.fragment_auto_create_auto)
     CardView mCreateAutoCard;
@@ -100,7 +100,7 @@ public class AutoFragment extends BaseFragment implements IAuto.View {
         mAutoCreatorController.setDataSet(owners);
     }
 
-    @OnClick(R.id.fragment_auto_add)
+    @OnClick(R.id.layout_common_add)
     void addAuto(){
         if (mCreateAutoCard.getVisibility()==View.GONE){
             mCreateAutoCard.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_down));
@@ -153,6 +153,11 @@ public class AutoFragment extends BaseFragment implements IAuto.View {
             public void onItemClicked(int position) {
                 mAutoCreatorController.setData(mAutoAdapter.getDataSet().get(position));
                 showMainView();
+            }
+
+            @Override
+            public void onItemDeleted(int position) {
+                mPresenter.deleteAuto(mAutoAdapter.getDataSet().get(position).getId());
             }
         });
     }
