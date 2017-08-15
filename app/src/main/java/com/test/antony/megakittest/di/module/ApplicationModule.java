@@ -2,7 +2,6 @@ package com.test.antony.megakittest.di.module;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import com.test.antony.megakittest.data.DataManager;
 import com.test.antony.megakittest.data.IDataManager;

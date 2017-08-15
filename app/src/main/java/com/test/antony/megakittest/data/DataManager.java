@@ -3,14 +3,20 @@ package com.test.antony.megakittest.data;
 import android.content.Context;
 
 import com.test.antony.megakittest.data.db.IDatabaseManager;
+import com.test.antony.megakittest.data.db.model.AutoData;
+import com.test.antony.megakittest.data.db.model.OwnerData;
 import com.test.antony.megakittest.data.network.INetworkManager;
 import com.test.antony.megakittest.di.ApplicationContext;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.reactivex.Observable;
+
 /**
- * Created by admin on 11.08.17.
+ * Created by Antony Mosin
  */
 
 @Singleton
@@ -30,6 +36,19 @@ public class DataManager implements IDataManager {
     }
 
 
+    @Override
+    public void addAuto(AutoData autoData) {
+        mDatabaseManager.addToDatabase(autoData);
+        mNetworkManager.sendAuto(autoData);
+    }
 
+    @Override
+    public Observable<List<AutoData>> getAutos() {
+        return mDatabaseManager.getData(AutoData.class);
+    }
 
+    @Override
+    public Observable<List<OwnerData>> getOwners() {
+        return mDatabaseManager.getData(OwnerData.class);
+    }
 }

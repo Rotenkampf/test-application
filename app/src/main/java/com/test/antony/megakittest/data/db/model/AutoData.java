@@ -1,13 +1,15 @@
 package com.test.antony.megakittest.data.db.model;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by admin on 12.08.17.
+ * Created by Antony Mosin
  */
 
-public class AutoData extends RealmObject{
+public class AutoData extends RealmObject implements Serializable{
 
     @PrimaryKey
     private String id;
@@ -46,5 +48,10 @@ public class AutoData extends RealmObject{
 
     public void setOwner(OwnerData owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

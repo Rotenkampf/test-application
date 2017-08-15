@@ -2,7 +2,6 @@ package com.test.antony.megakittest;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.StrictMode;
 
 import com.test.antony.megakittest.data.IDataManager;
 import com.test.antony.megakittest.di.component.ApplicationComponent;
@@ -12,7 +11,7 @@ import com.test.antony.megakittest.di.module.ApplicationModule;
 import javax.inject.Inject;
 
 /**
- * Created by admin on 11.08.17.
+ * Created by Antony Mosin
  */
 
 public class App extends Application {

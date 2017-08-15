@@ -3,7 +3,7 @@ package com.test.antony.megakittest.ui.base;
 import android.content.Context;
 
 /**
- * Created by admin on 11.08.17.
+ * Created by Antony Mosin
  */
 
 public interface IBase {

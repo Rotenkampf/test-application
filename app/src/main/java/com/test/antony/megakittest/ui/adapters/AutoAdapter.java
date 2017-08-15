@@ -9,19 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.test.antony.megakittest.R;
-import com.test.antony.megakittest.utils.pojo.AutoItem;
+import com.test.antony.megakittest.data.db.model.AutoData;
+import com.test.antony.megakittest.utils.listeners.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by admin on 12.08.17.
+ * Created by Antony Mosin
  */
 
 public class AutoAdapter extends RecyclerView.Adapter<AutoAdapter.AutoViewHolder> {
 
-    private List<AutoItem> mDataSet=new ArrayList<>();
+    private List<AutoData> mDataSet=new ArrayList<>();
     private Context mContext;
+    private OnItemClickListener mItemClickListener;
 
     @Override
     public AutoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,13 +36,35 @@ public class AutoAdapter extends RecyclerView.Adapter<AutoAdapter.AutoViewHolder
 
     @Override
     public void onBindViewHolder(AutoViewHolder holder, int position) {
+        final AutoViewHolder finHolder=holder;
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mItemClickListener!=null){
+                    mItemClickListener.onItemClicked(finHolder.getAdapterPosition());
+                }
+            }
+        });
         holder.name.setText(mDataSet.get(position).getName());
-        holder.owner.setText(mDataSet.get(position).getOwner());
+        holder.owner.setText(mDataSet.get(position).getOwner().getName());
+    }
+
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        mItemClickListener = itemClickListener;
     }
 
     @Override
     public int getItemCount() {
         return mDataSet.size();
+    }
+
+    public void setDataSet(List<AutoData> autoDatas){
+        mDataSet=autoDatas;
+        notifyDataSetChanged();
+    }
+
+    public List<AutoData> getDataSet() {
+        return mDataSet;
     }
 
     class AutoViewHolder extends RecyclerView.ViewHolder{

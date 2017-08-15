@@ -5,7 +5,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by admin on 12.08.17.
+ * Created by Antony Mosin
  */
 
 public class OwnerData extends RealmObject {
@@ -47,5 +47,10 @@ public class OwnerData extends RealmObject {
 
     public void setAutos(RealmList<AutoData> autos) {
         this.autos = autos;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

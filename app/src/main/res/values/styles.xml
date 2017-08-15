@@ -15,5 +15,9 @@
     <style name="MediumText" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textSize">@dimen/mediumText</item>
     </style>
+    <style name="CreationCard">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
 
 </resources>

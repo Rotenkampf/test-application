@@ -11,7 +11,6 @@ import com.test.antony.megakittest.ui.fragments.autoFragment.IAuto;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by admin on 11.08.17.

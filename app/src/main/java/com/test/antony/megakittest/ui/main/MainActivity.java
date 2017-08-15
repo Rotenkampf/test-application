@@ -1,9 +1,8 @@
 package com.test.antony.megakittest.ui.main;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.test.antony.megakittest.R;
 import com.test.antony.megakittest.ui.base.BaseActivity;
@@ -23,5 +22,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUnBinder(ButterKnife.bind(this));
+        mPager.setAdapter(new MainPagerAdapter(getFragmentManager(), this));
+        mTabLayout.setupWithViewPager(mPager);
     }
 }

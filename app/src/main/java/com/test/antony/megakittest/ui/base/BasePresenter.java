@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by admin on 11.08.17.
+ * Created by Antony Mosin
  */
 
 public class BasePresenter<V extends IBase.View> implements IBase.Presenter<V> {

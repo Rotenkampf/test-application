@@ -7,7 +7,7 @@ import com.test.antony.megakittest.ui.fragments.autoFragment.AutoFragment;
 import dagger.Component;
 
 /**
- * Created by admin on 11.08.17.
+ * Created by Antony Mosin
  */
 
 @PerFragment

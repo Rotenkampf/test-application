@@ -1,7 +1,7 @@
 package com.test.antony.megakittest.utils.pojo;
 
 /**
- * Created by admin on 12.08.17.
+ * Created by Antony Mosin
  */
 
 public class AutoItem {

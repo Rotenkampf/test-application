@@ -5,8 +5,10 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.support.v13.app.FragmentPagerAdapter;
 
+import com.test.antony.megakittest.ui.fragments.autoFragment.AutoFragment;
+
 /**
- * Created by admin on 11.08.17.
+ * Created by Antony Mosin
  */
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
@@ -22,7 +24,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0: return new Fragment();
+            case 0: return new AutoFragment();
             case 1: return new Fragment();
         }
         return new Fragment();

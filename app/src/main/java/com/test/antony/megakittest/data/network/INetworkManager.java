@@ -1,8 +1,13 @@
 package com.test.antony.megakittest.data.network;
 
+import com.test.antony.megakittest.data.db.model.AutoData;
+
 /**
- * Created by admin on 11.08.17.
+ * Created by Antony Mosin
  */
 
 public interface INetworkManager {
+
+    void sendAuto(AutoData autoData);
+
 }

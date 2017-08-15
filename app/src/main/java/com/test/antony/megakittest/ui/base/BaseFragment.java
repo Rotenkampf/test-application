@@ -18,7 +18,7 @@ import com.test.antony.megakittest.di.module.FragmentModule;
 import butterknife.Unbinder;
 
 /**
- * Created by admin on 11.08.17.
+ * Created by Antony Mosin
  */
 
 public class BaseFragment extends Fragment implements IBase.View{
